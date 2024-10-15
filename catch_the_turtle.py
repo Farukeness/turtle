@@ -1,5 +1,6 @@
 import turtle
 import random
+from tkinter import messagebox
 sc = turtle.Screen()
 sc.bgcolor("light blue")
 count_turtle = turtle.Turtle()
@@ -35,6 +36,7 @@ def timer(time):
         timer_turtle.write("Game Over",align="center",font=("Arial",20,"normal"))
         catch_turtle.hideturtle()
         game = False
+        messagebox.showinfo("Catch The Turtle","Game Over. Your Score {}".format(score))
 
 
 def random_turtle():
