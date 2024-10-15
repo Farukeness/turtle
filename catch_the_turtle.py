@@ -1,5 +1,4 @@
 import turtle
-import time
 import random
 sc = turtle.Screen()
 sc.bgcolor("light blue")
@@ -8,11 +7,14 @@ count_turtle.hideturtle()
 count_turtle.up()
 catch_turtle = turtle.Turtle()
 catch_turtle.shape("turtle")
+catch_turtle.shapesize(2,2,2)
 timer_turtle = turtle.Turtle()
 timer_turtle.up()
 timer_turtle.hideturtle()
 score = 0
 game =True
+difficulty_level = 2
+
 
 def counter():
     global score
@@ -45,12 +47,13 @@ def random_turtle():
     if game:
         catch_turtle.onclick(handle_click)
         catch_turtle.up()
-        x = random.randint(-300,300)
-        y = random.randint(-300,300)
-        catch_turtle.setposition(x,y)
+        x = random.randint(-30,30)
+        y = random.randint(-30,30)
+        catch_turtle.setposition(x*difficulty_level*5,y*difficulty_level*5)
         catch_turtle.stamp()
         catch_turtle.clear()
-        sc.ontimer(random_turtle,500)
+        sc.ontimer(random_turtle,700)
+        
       
     
     
@@ -59,11 +62,11 @@ def random_turtle():
     
     
 
+def start_game():
+    turtle.tracer(n=1, delay=0) 
+    counter()
+    timer(10)
+    random_turtle()
 
-turtle.tracer(0)
-counter()
-timer(5)
-random_turtle()
-turtle.tracer(1)    
-
+start_game()
 turtle.mainloop()
